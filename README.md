@@ -1,6 +1,6 @@
 # Protein Classifier
 
-Small, personal binary classification model, built to evaluate transmembrane vs. non-transmembrane proteins
+Small, personal binary classification model, built to evaluate membrane vs. non-membrane proteins
 
 ## Overview
 
