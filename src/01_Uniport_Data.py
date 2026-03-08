@@ -32,7 +32,6 @@ def download_uniprot_data(query: str, seq_limit: int, output: str):
 
 
 def main():
-    # Argument Parsing
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", default = "data/raw/uniprot")
     parser.add_argument("--seq_limit", default = 500, type=int)
@@ -47,7 +46,6 @@ def main():
     positive_output = os.path.join(args.output, "positive.fasta")
     negative_output = os.path.join(args.output, "negative.fasta")     
 
-    # Data Feedback
     print(f"Positive Transmembrane: {positive_output}")
     download_uniprot_data(positive, args.seq_limit, positive_output)
     print(f"Negative Transmembrane: {negative_output}")
