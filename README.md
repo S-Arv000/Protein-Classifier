@@ -14,11 +14,11 @@ Scripts pull data from uniprot, builds dataset train and evaluate a model, then 
 Data: Stores raw input files (sequences, positive/negative sequences)
 Models: saved models and checkpoints
 src: core scripts
-    01_Uniprot_Data: Fetch Uniprot data and sequences
-    02_Dataset: Preprocessing and constructs dataset 
-    03_train_Eval: model training and evaluations to base predictions
-    04_Predictions: generate predictions from inputs (see "Data")
-    FASTA_Reader, Feature_quantifier: Helper modules
+    \n01_Uniprot_Data: Fetch Uniprot data and sequences
+    \n02_Dataset: Preprocessing and constructs dataset 
+    \n03_train_Eval: model training and evaluations to base predictions
+    \n04_Predictions: generate predictions from inputs (see "Data")
+    \nFASTA_Reader, Feature_quantifier: Helper modules
 
 
 ## Startup
