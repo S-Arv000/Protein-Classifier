@@ -49,6 +49,18 @@ Place input files in data/raw as positve/negative.fasta for training
   
 Include input file wanting to predict, save as "input_fasta" and add realtiveb path to 04, get Output CSV of predictions
 
+## Results
+
+Threshold=0.51  
+accuracy: 0.91  
+Precision: 0.91148  
+Recall: 0.91   
+
+![Confusion Matrix](<img width="640" height="480" alt="confusion_matrix" src="https://github.com/user-attachments/assets/f364b43a-3005-44ea-9cd3-c0d0b815b03b" />
+)
+
+![Precision Recall](<img width="640" height="480" alt="precision_recall_curve" src="https://github.com/user-attachments/assets/ef0391de-a71f-498d-872a-ed37837a40a0" />
+)
 
 ## Things to do maybe
 
