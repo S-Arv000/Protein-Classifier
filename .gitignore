@@ -1,14 +1,9 @@
-## Outputs
 data/
 models/
 reports/
-
-## junk
+*.txt
+*.fasta
+*.csv
+*.joblib
 __pycache__/
 *.pyc
-
-## Artifacts
-*.joblib
-*.csv
-*.fasta
-*.txt
