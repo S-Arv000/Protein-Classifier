@@ -1,0 +1,14 @@
+## Outputs
+data/
+models/
+reports/
+
+## junk
+__pycache__/
+*.pyc
+
+## Artifacts
+*.joblib
+*.csv
+*.fasta
+*.txt
