@@ -1,7 +1,7 @@
 import numpy as np
 from dataclasses import dataclass
 
-# Standard amino acid codes
+# AMino Acid codes
 AA = "ARNDCEQGHILKMFPSTWYV"
 AA_set = set(AA)
 
@@ -15,7 +15,7 @@ KD = {
 
 @dataclass(frozen=True)
 class FeatureQuantifier:
-    window: int = 15  # Window size for sliding window
+    window: int = 15
     hydro_threshold: float = 1.8  # Threshold for hydrophobic residues
     min_length: int = 30
 
@@ -40,7 +40,7 @@ def hydrophobicity(seq: str) -> float:
 
 # Find average KD of window sequences
 def aa_window(seq: str, window: int) -> float:
-    """Highest average hydrophobicity over any sliding window of length *window*."""
+    """Highest average hydrophobicity over sliding window"""
     if len(seq) == 0:
         return 0.0
 
@@ -49,7 +49,6 @@ def aa_window(seq: str, window: int) -> float:
 
     vals = np.array([KD.get(x, 0.0) for x in seq])
     cumsum = np.cumsum(np.insert(vals, 0, 0.0))
-    # Use Cumulative sums
     window_sums = cumsum[window:] - cumsum[:-window]
     return float(np.max(window_sums / window))
 
@@ -90,7 +89,6 @@ def quantify_features(seq: str, quantifier: FeatureQuantifier) -> dict:
     return feature
 
 
-# fixed column order for feature vector
 def feature_columns(quantifier: FeatureQuantifier) -> list:
     dummy_seq = quantify_features("A", quantifier)
     return list(dummy_seq.keys())
