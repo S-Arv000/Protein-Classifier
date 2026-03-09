@@ -47,7 +47,7 @@ def main():
     os.makedirs(os.path.dirname(args.output_csv), exist_ok=True)
     df.to_csv(args.output_csv, index=False)
 
-    # Summary
+    # Summary of everything
     print(
         f"\n Dataset Summary:"
         f"\nSaved to:          {args.output_csv}"

@@ -5,7 +5,7 @@ from sklearn import base
 
 UNIPROT_URL = "https://rest.uniprot.org/uniprotkb/search"
 
-# Download Fasta Results from Uniprot, send to output file
+# Download Fasta Results from Uniprot
 def download_uniprot_data(query: str, seq_limit: int, output: str):
     """Download Sequences and save to outputfile """
     params = {"query": query, "format": "fasta", "size": seq_limit, "compressed": "false",}
@@ -32,14 +32,13 @@ def download_uniprot_data(query: str, seq_limit: int, output: str):
 
 
 def main():
-    # Argument Parsing
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", default = "data/raw/uniprot")
     parser.add_argument("--seq_limit", default = 500, type=int)
     parser.add_argument("--reviewed", action="store_true")
     args = parser.parse_args() 
 
-    
+    # Transmembrane keyword is KW-0812 
     base = "reviewed:true" if args.reviewed else None
     positive = "keyword:KW-0812" if base is None else f"{base} AND keyword:KW-0812"
     negative = "NOT keyword:KW-0812" if base is None else f"{base} AND NOT keyword:KW-0812"  
@@ -47,9 +46,9 @@ def main():
     positive_output = os.path.join(args.output, "positive.fasta")
     negative_output = os.path.join(args.output, "negative.fasta")     
 
-    # Data Feedback
-    print(f"Positive Transmembrane: {positive_output}")
-    print(f"Negative Transmembrane: {negative_output}")
+    # Location of training data (adjust paths as needed)
+    print(f"Positive = Transmembrane: {positive_output}")
+    print(f"Negative = Non-Transmembrane: {negative_output}")
     download_uniprot_data(positive, args.seq_limit, positive_output)
     download_uniprot_data(negative, args.seq_limit, negative_output)
 

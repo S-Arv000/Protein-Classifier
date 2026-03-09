@@ -7,11 +7,12 @@ from Feature_quantifier import FeatureQuantifier, quantify_features
 
 
 def main():
+    ''' Predict protein properties, return id with P(transmembrane) and predicion'''
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--model_path", default="models/logistic_model.joblib"
-    ) 
-    # Add fasta input (adjust path as needed)
+        "--model_path", default="models/logistic_model.joblib")
+     
+    # Adjust input path as needed
     parser.add_argument("--input_fasta", default = "data/Input/input_fasta.txt")
     parser.add_argument("--out_csv", default="reports/predictions.csv")
     args = parser.parse_args()

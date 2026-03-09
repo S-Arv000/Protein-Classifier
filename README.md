@@ -1,21 +1,23 @@
 # Protein Classifier
 
-Small, personal binary classification model, built to evaluate membrane vs. non-membrane proteins
-
+Small, personal binary classification, basically first project.  
+It works so im happy
 ## Overview
 
-Contains scripts to train an develop a model to classify membrane vs. non-membrane proteins.
-Scripts pull data from uniprot, builds dataset, train and evaluate a model, then generate predictions on sequences. All protein data in FASTA format
+Contains scripts to train an develop a model to classify transmembrane vs. non-transmembrane proteins
+Scripts pull data from uniprot, build a dataset, train, then generate predictions on sequences. All protein data in FASTA format  
+  
++(ve) = transmemebrane 
 
 ## Repos
 
-Data: Stores raw input files (sequences, positive/negative sequences)
-Models: saved models and checkpoints
-src: core scripts
-    01_Uniprot_Data: Fetch Uniprot data and sequences
-    02_Dataset: Preprocessing and constructs dataset 
-    03_train_Eval: model training and evaluations to base predictions
-    04_Predictions: generate predictions from inputs (see "Data")
+data: Stores raw input files (sequences, positive/negative sequences)
+models: saved models and checkpoints
+src:
+    1_uniprot: Fetch Uniprot data and sequences
+    2_dataset: Preprocessing and constructs dataset 
+    3_training: model training and evaluations
+    4_predict: generate predictions
     FASTA_Reader, Feature_quantifier: Helper modules
 
 
@@ -25,18 +27,18 @@ src: core scripts
     skikit-learn, numpy, pandas
 
 2.Run Pipeline in order:  
-    01_Uniprot_Data  
-    02_Dataset  
-    03_Train_Eval  
-    04_Predictions  
+    1_uniprot  
+    2_dataset  
+    3_Training  
+    4_predict  
 
 
 ## Outputs
 
-Saved model joblib  
-Metrics JSON  
-Report & plots: ROC, PR, confusion matrix  
-Output CSV: sequence id, probability, predicted label +ve(1) or -ve(0)
+model joblib  
+metrics JSON  
+plots: ROC, PR, cfm  
+predictions csv: sequence id, probability, predicted label +ve(1) or -ve(0)
 
 
 ## Results

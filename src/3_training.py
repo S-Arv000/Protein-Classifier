@@ -23,8 +23,7 @@ from sklearn.metrics import (
 
 
 def f1_threshold(y_true, y_probs):
-    """Return (threshold, f1) that maximise F1 on the given probabilities."""
-    # include both 0.0 and 1.0 exactly
+    """Return (threshold, f1) that maximises F1"""
     thresholds = np.linspace(0.0, 1.0, 101)
     best_threshold = 0.5
     best_f1 = -1.0
@@ -60,6 +59,7 @@ def main():
     parser.add_argument("--random_state", default=42, type=int)
     args = parser.parse_args()
 
+    #   training
     df = pd.read_csv(args.data_csv)
     X = df.drop(columns=["id", "label"])
     y = df["label"]
@@ -103,15 +103,15 @@ def main():
         "feature_columns": feature_columns,
     }
 
-    print("==Model Metrics==")
+    print("Model Metrics:")
     print(json.dumps(metrics, indent=4))
 
-    print("\n==Classification Report (0.5 threshold)==")
+    print("\nClassification Report (0.5 threshold)")
     print(classification_report(y_test, preds_05, digits=5))
-    print(f"\n==Classification Report (best F1 threshold = {best_threshold})==")
+    print(f"\nClassification Report (best F1 threshold = {best_threshold})")
     print(classification_report(y_test, preds, digits=5))
 
-    # save model/metrics
+    # Metrics
     os.makedirs(os.path.dirname(args.model_output), exist_ok=True)
     joblib.dump(
         {
@@ -125,7 +125,7 @@ def main():
     with open(args.model_metrics, "w") as f:
         json.dump(metrics, f, indent=4)
 
-    # save classification report text
+    # Classification report text
     os.makedirs(os.path.dirname(args.classification_report), exist_ok=True)
     with open(args.classification_report, "w") as f:
         f.write("Threshold=0.5\n")
@@ -134,17 +134,17 @@ def main():
         f.write(f"Threshold={best_threshold}\n")
         f.write(classification_report(y_test, preds, digits=5))
 
-    # plots
+    # plots belwo
     os.makedirs(args.reports_dir, exist_ok=True)
 
     # ROC
     fpr, tpr, _ = roc_curve(y_test, y_probs)
     plt.figure()
     plt.plot(fpr, tpr)
-    plt.xlabel("False Positive Rate")
-    plt.ylabel("True Positive Rate")
+    plt.xlabel("False Positive")
+    plt.ylabel("True Positive")
     plt.title("ROC Curve")
-    plt.savefig(os.path.join(args.reports_dir, "roc_curve.png"))
+    plt.savefig(os.path.join(args.reports_dir, "ROC.png"))
     plt.close()
 
     # PR curve
@@ -154,7 +154,7 @@ def main():
     plt.xlabel("Recall")
     plt.ylabel("Precision")
     plt.title("Precision-Recall Curve")
-    plt.savefig(os.path.join(args.reports_dir, "precision_recall_curve.png"))
+    plt.savefig(os.path.join(args.reports_dir, "PRC.png"))
     plt.close()
 
     # confusion matrix using best F1 threshold
@@ -165,7 +165,7 @@ def main():
     plt.xlabel("Predicted Label")
     plt.ylabel("True Label")
     plt.title(f"Confusion Matrix (Best F1 thresh = {best_threshold})")
-    plt.savefig(os.path.join(args.reports_dir, "confusion_matrix.png"))
+    plt.savefig(os.path.join(args.reports_dir, "cfm.png"))
     plt.close()
 
     print(f"Saved Model: {args.model_output}")

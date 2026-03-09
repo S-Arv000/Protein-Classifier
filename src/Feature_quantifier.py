@@ -49,7 +49,6 @@ def aa_window(seq: str, window: int) -> float:
 
     vals = np.array([KD.get(x, 0.0) for x in seq])
     cumsum = np.cumsum(np.insert(vals, 0, 0.0))
-    # Use Cumulative sums
     window_sums = cumsum[window:] - cumsum[:-window]
     return float(np.max(window_sums / window))
 
@@ -90,7 +89,6 @@ def quantify_features(seq: str, quantifier: FeatureQuantifier) -> dict:
     return feature
 
 
-# fixed column order for feature vector
 def feature_columns(quantifier: FeatureQuantifier) -> list:
     dummy_seq = quantify_features("A", quantifier)
     return list(dummy_seq.keys())
