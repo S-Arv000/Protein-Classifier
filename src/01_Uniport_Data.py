@@ -49,8 +49,8 @@ def main():
 
     # Data Feedback
     print(f"Positive Transmembrane: {positive_output}")
-    download_uniprot_data(positive, args.seq_limit, positive_output)
     print(f"Negative Transmembrane: {negative_output}")
+    download_uniprot_data(positive, args.seq_limit, positive_output)
     download_uniprot_data(negative, args.seq_limit, negative_output)
 
 

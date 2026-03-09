@@ -5,9 +5,7 @@ Small, personal binary classification model, built to evaluate membrane vs. non-
 ## Overview
 
 Contains scripts to train an develop a model to classify membrane vs. non-membrane proteins.
-Scripts pull data from uniprot, builds dataset train and evaluate a model, then generate predictions on sequences. All protein data in FASTA format
-
-^^ Currently trained on 100 Seqs 
+Scripts pull data from uniprot, builds dataset, train and evaluate a model, then generate predictions on sequences. All protein data in FASTA format
 
 ## Repos
 
@@ -42,9 +40,16 @@ Output CSV: sequence id, probability, predicted label +ve(1) or -ve(0)
 
 
 ## Results
+Based on 
 
+Threshold: 0.51  
   
-![Confusion matrix]("reports\cfm.png)  
+weighted avgs:  
+Precision: 0.91148    
+Recall: 0.91000  
+F1: 0.90992
+  
+![Confusion Matrix]("reports\cfm.png)  
 
 ![Precision Recall]("reports\PRC.png)
 

@@ -11,7 +11,7 @@ def main():
     parser.add_argument(
         "--model_path", default="models/logistic_model.joblib"
     ) 
-    # Add fasta input (adjust path as needed) and output predictions
+    # Add fasta input (adjust path as needed)
     parser.add_argument("--input_fasta", default = "data/Input/input_fasta.txt")
     parser.add_argument("--out_csv", default="reports/predictions.csv")
     args = parser.parse_args()
