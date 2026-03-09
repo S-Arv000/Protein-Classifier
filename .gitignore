@@ -1,8 +1,11 @@
 data/
 models/
+
 *.txt
 *.fasta
 *.csv
 *.joblib
 __pycache__/
 *.pyc
+!classification_report.txt
+!predictions.csv

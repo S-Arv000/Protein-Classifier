@@ -41,23 +41,15 @@ Report & plots: ROC, PR, confusion matrix
 Output CSV: sequence id, probability, predicted label +ve(1) or -ve(0)
 
 
-## Data
+## Results
 
-Extract data directly from Uniprot, changing seq_limit for amount of data  
-OR  
-Place input files in data/raw as positve/negative.fasta for training  
   
-Include input file wanting to predict, save as "input_fasta" and add realtiveb path to 04, get Output CSV of predictions
+![Confusion matrix]("reports\cfm.png)  
+
+![Precision Recall]("reports\PRC.png)
 
 
-## Things to do maybe
 
-Better split, baseline, feature expansion, model upgrades  
-
-If im feeling it; Structure prediction, functino prediction, 
-identify localization  
-
-will see
 
 
 
