@@ -42,7 +42,7 @@ predictions csv: sequence id, probability, predicted label +ve(1) or -ve(0)
 
 
 ## Results
-Based on 500 sequences
+Trained on 500 proteins
 
 Threshold: 0.51  
   
@@ -53,7 +53,9 @@ F1: 0.90992
   
 ![Confusion Matrix]("reports\cfm.png)  
 
-![Precision Recall]("reports\PRC.png)
+![Precision Recall]("reports\PRC.png)  
+
+Predictions on input data in reports, 373 proteins
 
 
 
