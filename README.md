@@ -42,7 +42,7 @@ predictions csv: sequence id, probability, predicted label +ve(1) or -ve(0)
 
 
 ## Results
-Based on 
+Based on 500 sequences
 
 Threshold: 0.51  
   

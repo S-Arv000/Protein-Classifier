@@ -1,7 +1,7 @@
 import numpy as np
 from dataclasses import dataclass
 
-# Standard amino acid codes
+# AMino Acid codes
 AA = "ARNDCEQGHILKMFPSTWYV"
 AA_set = set(AA)
 
@@ -15,14 +15,14 @@ KD = {
 
 @dataclass(frozen=True)
 class FeatureQuantifier:
-    window: int = 15  # Window size for sliding window
+    window: int = 15
     hydro_threshold: float = 1.8  # Threshold for hydrophobic residues
     min_length: int = 30
 
 
 # Fraction of each aa in sequence
 def aa_composition(seq: str) -> dict:
-    """Return fraction of every standard amino acid in *seq*."""
+    """Return fraction of every standard amino acid in seq."""
     seq_len = len(seq)
     if seq_len == 0:
         return {aa: 0.0 for aa in AA}
@@ -32,7 +32,7 @@ def aa_composition(seq: str) -> dict:
 
 # Average KD score
 def hydrophobicity(seq: str) -> float:
-    """Mean KD hydrophobicity of *seq*."""
+    """Mean KD hydrophobicity of seq."""
     if len(seq) == 0:
         return 0.0
     hydro_values = [KD.get(aa, 0.0) for aa in seq]
@@ -40,7 +40,7 @@ def hydrophobicity(seq: str) -> float:
 
 # Find average KD of window sequences
 def aa_window(seq: str, window: int) -> float:
-    """Highest average hydrophobicity over any sliding window of length *window*."""
+    """Highest average hydrophobicity over sliding window"""
     if len(seq) == 0:
         return 0.0
 
@@ -55,7 +55,7 @@ def aa_window(seq: str, window: int) -> float:
 
 # Find longest run of hydrophobic residues
 def longest_phobic_seq(seq: str, threshold: float) -> int:
-    """Length of the longest consecutive run with KD ≥ *threshold*."""
+    """Length of the longest consecutive run with KD ≥ threshold."""
     max_len = 0
     current_len = 0
 
